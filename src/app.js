@@ -1,6 +1,8 @@
 import express from "express";
 import db from "./config/dbConnect.js";  
 import users from "./models/User.js";
+import routes from "./routes/index.js";
+import route from "./routes/index.js";
 
 
 db.on("error",console.log.bind(console,"erro de conexão!"))
@@ -12,14 +14,7 @@ const app = express();
 
 app.use(express.json())
 
-
-app.get('/',(req,res) =>{
-
-    users.find((err,users) => {
-      res.status(200).json(users);
-    })
-    
-})
+routes(app);
 
 
 export default app
