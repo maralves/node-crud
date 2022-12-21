@@ -56,6 +56,21 @@ class UserController {
             }
         });
     }
+    static deletarUser = (req,res) => {
+
+        const id = req.params.id;
+
+        users.findByIdAndDelete(id, (err) => {
+            
+            if(!err){
+                res.status(200).send({message:'Usuário excluído com sucesso'});
+            }
+            else{
+                res.status(500).send({message: err.message});
+            }
+
+        })
+    }
 
 }
 
